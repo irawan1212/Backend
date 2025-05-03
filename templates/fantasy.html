@@ -750,46 +750,48 @@
 
 
         <!-- Gallery Section -->
-    <section id="gallery" class="min-h-screen flex items-center justify-center relative section pt-6 md:pt-10">
-        <div class="container mx-auto text-center px-4 z-10">
-            <div class="fantasy-border p-6 md:p-10 relative">
-                <div class="absolute inset-0 bg-black bg-opacity-60 rounded-lg"></div>
-                <div class="relative z-10">
-                    <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">Our Gallery</h2>
-    
-                    <!-- Container Slider -->
-                    <div class="relative">
-                        <!-- Tombol Previous -->
-                        <button onclick="prevSlide()"
-                            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gold text-black p-2 rounded-full z-20">
-                            &#10094;
-                        </button>
-    
-                        <!-- List Gallery (akan diisi JavaScript) -->
-                        <div id="gallerySlider"
-                            class="flex overflow-x-auto gap-4 pb-4 scroll-smooth snap-x snap-mandatory scrollbar-hide">
-                            <!-- Galeri di-generate dari JS -->
+        <section id="gallery" class="min-h-screen flex items-center justify-center relative section pt-6 md:pt-10">
+            <div class="container mx-auto text-center px-4 z-10">
+                <div class="fantasy-border p-6 md:p-10 relative">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 rounded-lg"></div>
+                    <div class="relative z-10">
+                        <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">Our Gallery</h2>
+
+                        <!-- Container Slider -->
+                        <div class="relative">
+                            <!-- Tombol Previous -->
+                            <button onclick="prevSlide()"
+                                class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gold text-black p-2 rounded-full z-20">
+                                &#10094;
+                            </button>
+
+                            <!-- List Gallery (akan diisi JavaScript) -->
+                            <div id="gallerySlider"
+                                class="flex overflow-x-auto gap-4 pb-4 scroll-smooth snap-x snap-mandatory scrollbar-hide">
+                                <!-- Galeri di-generate dari JS -->
+                            </div>
+
+                            <!-- Tombol Next -->
+                            <button onclick="nextSlide()"
+                                class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gold text-black p-2 rounded-full z-20">
+                                &#10095;
+                            </button>
                         </div>
-    
-                        <!-- Tombol Next -->
-                        <button onclick="nextSlide()"
-                            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gold text-black p-2 rounded-full z-20">
-                            &#10095;
-                        </button>
                     </div>
                 </div>
             </div>
-        </div>
-    
-        <!-- Modal Zoom Foto -->
-        <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
-            <div class="relative max-w-3xl w-full p-4 animate-zoomIn">
-                <button onclick="closeImageModal()" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
-                <img id="modalImage" src="" alt="Zoomed Photo"
-                    class="w-full rounded-lg shadow-lg object-contain max-h-[80vh]" />
+
+            <!-- Modal Zoom Foto -->
+            <div id="imageModal"
+                class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+                <div class="relative max-w-3xl w-full p-4 animate-zoomIn">
+                    <button onclick="closeImageModal()"
+                        class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+                    <img id="modalImage" src="" alt="Zoomed Photo"
+                        class="w-full rounded-lg shadow-lg object-contain max-h-[80vh]" />
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
 
         <!-- Location Section -->
@@ -839,40 +841,40 @@
     </audio>
 
     <script>
-         const galleryPhotos = JSON.parse('{{galleryPhotos}}'); // injek string JSON
+        const galleryPhotos = JSON.parse('{{galleryPhotos}}'); // injek string JSON
 
-            const gallerySlider = document.getElementById("gallerySlider");
+        const gallerySlider = document.getElementById("gallerySlider");
 
-            galleryPhotos.forEach((src, index) => {
-                const div = document.createElement("div");
-                div.className = "gallery-item snap-center border-2 border-gold rounded-lg";
+        galleryPhotos.forEach((src, index) => {
+            const div = document.createElement("div");
+            div.className = "gallery-item snap-center border-2 border-gold rounded-lg";
 
-                const img = document.createElement("img");
-                img.src = src;
-                img.alt = `Foto ${index + 1}`;
-                img.className = "h-48 md:h-64 object-cover rounded-lg cursor-pointer";
-                img.onclick = () => openImageModal(src);
+            const img = document.createElement("img");
+            img.src = src;
+            img.alt = `Foto ${index + 1}`;
+            img.className = "h-48 md:h-64 object-cover rounded-lg cursor-pointer";
+            img.onclick = () => openImageModal(src);
 
-                div.appendChild(img);
-                gallerySlider.appendChild(div);
-            });
+            div.appendChild(img);
+            gallerySlider.appendChild(div);
+        });
 
-            function openImageModal(src) {
-                document.getElementById("modalImage").src = src;
-                document.getElementById("imageModal").classList.remove("hidden");
-            }
+        function openImageModal(src) {
+            document.getElementById("modalImage").src = src;
+            document.getElementById("imageModal").classList.remove("hidden");
+        }
 
-            function closeImageModal() {
-                document.getElementById("imageModal").classList.add("hidden");
-            }
+        function closeImageModal() {
+            document.getElementById("imageModal").classList.add("hidden");
+        }
 
-            function nextSlide() {
-                gallerySlider.scrollBy({ left: 250, behavior: 'smooth' });
-            }
+        function nextSlide() {
+            gallerySlider.scrollBy({ left: 250, behavior: 'smooth' });
+        }
 
-            function prevSlide() {
-                gallerySlider.scrollBy({ left: -250, behavior: 'smooth' });
-            }
+        function prevSlide() {
+            gallerySlider.scrollBy({ left: -250, behavior: 'smooth' });
+        }
         particlesJS("particles-cover", {
             particles: {
                 number: {
