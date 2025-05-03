@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fantasy Wedding Invitation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Montserrat:wght@300;400;500&display=swap"
+        rel="stylesheet">
+    <!-- Add particles.js library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <style>
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Custom Properties */
+        :root {
+            --color-gold: #d4af37;
+            --color-gold-dark: #b8941c;
+            --color-black: #000;
+            --color-dark: #111;
+            --color-white: #fff;
+            --font-fantasy: 'Tangerine', cursive;
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--color-white);
+            overflow-x: hidden;
+
+            background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1744935895/tmshsqic1y7stkoz7rty.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        .font-fantasy {
+            font-family: var(--font-fantasy);
+        }
+
+        .text-gold {
+            color: var(--color-gold);
+        }
+
+        .bg-gold {
+            background-color: var(--color-gold);
+        }
+
+        .bg-gold-dark {
+            background-color: var(--color-gold-dark);
+        }
+
+        /* Cover Screen */
+        #cover {
+            background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1744935895/tmshsqic1y7stkoz7rty.png');
+            background-size: 140%;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: var(--transition);
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+        }
+
+        @media (max-width: 768px) {
+            .countdown-item {
+                width: 60px;
+                padding: 8px;
+            }
+
+            .avatar-container {
+                width: 140px;
+                height: 140px;
+            }
+
+            .nav-item {
+                width: 35px;
+                height: 35px;
+            }
+
+            #cover {
+                background-size: cover;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-item {
+                width: 50px;
+                padding: 6px;
+            }
+
+            .fantasy-border::after {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+            }
+        }
+
+        /* Navigation */
+        .nav-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background-color: var(--color-gold);
+            color: var(--color-black);
+            transform: scale(1.1);
+        }
+
+        /* Section Styles */
+        .section {
+            scroll-margin-top: 2rem;
+            opacity: 0;
+
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+
+        }
+
+        .section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+        }
+
+        /* Fantasy Border */
+        .fantasy-border {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .fantasy-border::before,
+        .fantasy-border::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 1px solid var(--color-gold);
+            border-radius: 10px;
+            z-index: 0;
+        }
+
+        .fantasy-border::after {
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+        }
+
+        /* Countdown */
+        .countdown {
+            display: flex;
+            justify-content: center;
+        }
+
+        .countdown-item {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 10px;
+            width: 70px;
+            margin: 0 5px;
+            border: 1px solid var(--color-gold);
+        }
+
+        /* Avatar Container */
+        .avatar-container {
+            position: relative;
+            width: 170px;
+            height: 170px;
+        }
+
+        .avatar-frame {
+            position: relative;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--color-gold);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        /* Event Card */
+        .event-card {
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            padding: 20px;
+            border: 1px solid var(--color-gold);
+            transition: var(--transition);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.2);
+        }
+
+        /* Gallery */
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 2px solid var(--color-gold);
+        }
+
+        .gallery-item:hover {
+            border-color: var(--color-gold);
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Form Elements */
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-gold);
+            border-radius: 8px;
+            color: var(--color-white);
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Buttons */
+        .calendar-btn,
+        .location-btn,
+        .rsvp-btn,
+        .submit-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 16px;
+            background-color: var(--color-gold);
+            color: var(--color-black);
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .calendar-btn:hover,
+        .location-btn:hover,
+        .rsvp-btn:hover,
+        .submit-btn:hover {
+            background-color: var(--color-gold-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Wish Cards */
+        .wish-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 15px;
+            text-align: left;
+            border-left: 3px solid var(--color-gold);
+        }
+
+        /* Social Icons */
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--color-white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--color-gold);
+            color: var(--color-black);
+            transform: translateY(-3px);
+        }
+
+        /* Animation Classes */
+        .animate-fade-in {
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1.5s ease-out forwards;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s infinite;
+        }
+
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease;
+        }
+
+        .reveal-item.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .delay-100 {
+            transition-delay: 0.1s;
+        }
+
+        .delay-200 {
+            transition-delay: 0.2s;
+        }
+
+        .delay-300 {
+            transition-delay: 0.3s;
+        }
+
+        .delay-400 {
+            transition-delay: 0.4s;
+        }
+
+        .delay-500 {
+            transition-delay: 0.5s;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+            }
+        }
+
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        #particles-cover,
+        #particles-main {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Particles Container */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #particles-cover {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .countdown-item {
+                width: 60px;
+                padding: 8px;
+            }
+
+            .avatar-container {
+                width: 140px;
+                height: 140px;
+            }
+
+            .nav-item {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-item {
+                width: 50px;
+                padding: 6px;
+            }
+
+            .fantasy-border::after {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+            }
+
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.7);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .animate-zoomIn {
+            animation: zoomIn 0.3s ease-out;
+        }
+    </style>
+</head>
+
+<body class="font-sans bg-black text-white overflow-x-hidden">
+
+    <!-- Particles Container (Single container for both cover and main content) -->
+    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+
+
+    <!-- COVER SECTION -->
+    <div id="cover" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
+        <div id="particles-cover"></div>
+        <div class="text-center p-8 transform transition-all duration-1000">
+            <h1 class="font-fantasy text-4xl md:text-6xl mb-4 text-gold animate-fade-in">The Wedding Of</h1>
+            <div class="flex flex-col items-center justify-center leading-tight animate-fade-in relative">
+                <!-- Groom -->
+                <h1 class="font-fantasy text-4xl md:text-5xl text-silver mb-2 -ml-12">{{groom}}</h1>
+
+                <!-- & Symbol -->
+                <h1 class="font-fantasy text-3xl md:text-4xl text-silver">&</h1>
+
+                <!-- Bride -->
+                <h1 class="font-fantasy text-4xl md:text-5xl text-silver mt-2 -mr-12">{{bride}}</h1>
+            </div>
+            <p class=" text-lg mb-4">Dear</p>
+            <p class=" font-fantasy text-4xl md:text-4xl mb-4 text-silver animate-fade-in">{{guest}}</p>
+            <p class=" text-lg mb-4">You're Invited to Our Wedding</p>
+            <button onclick="openInvitation()" id="open-invitation"
+                class="px-8 py-3 bg-gold text-black rounded-full hover:bg-gold-dark transform hover:scale-105 transition duration-300 flex items-center inline-flex">
+                <i class="fas fa-envelope-open-text mr-2"></i> Open Invitation
+            </button>
+            <div class="mt-8 text-sm opacity-70">
+                <p>Please tap the button to open our invitation</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main-content" class="hidden">
+        <div class="fixed top-4 right-4 z-40 cursor-pointer bg-black bg-opacity-60 rounded-full p-3">
+            <i id="audio-control" class="fas fa-volume-up text-gold text-xl"></i>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex justify-center items-center 
+          backdrop-blur-md text-white rounded-full px-4 py-2 space-x-4 md:space-x-6 shadow-xl">
+            <a href="#home" class="nav-item hover:text-gold text-xl md:text-2xl transition">
+                <i class="fas fa-home"></i>
+            </a>
+            <a href="#couple" class="nav-item hover:text-gold text-xl md:text-2xl transition">
+                <i class="fas fa-heart"></i>
+            </a>
+            <a href="#event" class="nav-item hover:text-gold text-xl md:text-2xl transition">
+                <i class="fas fa-calendar-alt"></i>
+            </a>
+            <a href="#gallery" class="nav-item hover:text-gold text-xl md:text-2xl transition">
+                <i class="fas fa-images"></i>
+            </a>
+            <a href="#location" class="nav-item hover:text-gold text-xl md:text-2xl transition">
+                <i class="fas fa-map-marker-alt"></i>
+            </a>
+        </nav>
+
+
+
+        <section id="home" class="min-h-screen flex items-center justify-center bg-cover bg-center relative section">
+            <div class="container mx-auto px-4 z-10 text-center">
+                <div class="fantasy-border p-6 md:p-10 bg-black bg-opacity-60 rounded-lg relative overflow-hidden">
+                    <div class="space-y-6">
+                        <!-- Judul -->
+                        <h1
+                            class="font-fantasy text-2xl sm:text-4xl md:text-6xl text-gold animate-fade-in-up leading-tight">
+                            The Wedding Of
+                        </h1>
+
+                        <!-- Nama Pasangan -->
+                        <div class="flex items-center justify-center space-x-2 sm:space-x-6 animate-fade-in">
+                            <div class="h-px bg-gold w-8 sm:w-12 md:w-24"></div>
+                            <div
+                                class="font-fantasy text-2xl sm:text-3xl md:text-5xl text-gold break-words max-w-xs leading-tight">
+                                {{groom}} &amp; {{bride}}
+                            </div>
+                            <div class="h-px bg-gold w-8 sm:w-12 md:w-24"></div>
+                        </div>
+
+                        <!-- Tanggal -->
+                        <p
+                            class="text-base sm:text-lg md:text-2xl text-white animate-fade-in-up delay-300 leading-normal">
+                            Save the Date | {{date}}
+                        </p>
+
+                        <!-- Countdown -->
+                        <div class="flex justify-center gap-4 md:gap-8 flex-wrap animate-fade-in-up delay-500">
+                            <div class="flex justify-center gap-4 md:gap-8 flex-wrap animate-fade-in-up delay-500">
+                                <div class="countdown-item text-center flex flex-col items-center">
+                                    <div id="days" class="text-2xl md:text-4xl font-bold text-gold">00</div>
+                                    <div class="text-xs md:text-base text-white">Days</div>
+                                </div>
+                                <div class="countdown-item text-center flex flex-col items-center">
+                                    <div id="hours" class="text-2xl md:text-4xl font-bold text-gold">00</div>
+                                    <div class="text-xs md:text-base text-white">Hours</div>
+                                </div>
+                                <div class="countdown-item text-center flex flex-col items-center">
+                                    <div id="minutes" class="text-2xl md:text-4xl font-bold text-gold">00</div>
+                                    <div class="text-xs md:text-base text-white">Minutes</div>
+                                </div>
+                                <div class="countdown-item text-center flex flex-col items-center">
+                                    <div id="seconds" class="text-2xl md:text-4xl font-bold text-gold">00</div>
+                                    <div class="text-xs md:text-base text-white">Seconds</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <section id="couple" class="min-h-screen flex items-center justify-center relative section py-16 md:py-24">
+            <div class="container mx-auto text-center px-4 z-10">
+                <div class="fantasy-border p-6 md:p-10 relative z-10">
+                    <!-- Background overlay -->
+
+
+                    <!-- Content -->
+                    <div class="relative z-10 bg-cover bg-center rounded-lg"
+                        style="background-image: url('{{photoLink}}');">
+                        <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">The Bride & Groom</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                            <!-- Bride -->
+                            <div class="bride reveal-item relative z-10 flex flex-col items-center">
+                                <div class="avatar-container mb-4 mx-auto">
+                                    <div class="avatar-frame relative z-20">
+                                        <img src="{{groomPhoto}}" alt="Groom"
+                                            class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover mx-auto">
+                                    </div>
+                                </div>
+                                <!-- Nama dan Deskripsi -->
+                                <div class="relative z-20 mt-20"> <!-- Added margin-top for more spacing -->
+                                    <h3 class="font-fantasy text-3xl md:text-4xl text-gold">{{groom}}</h3>
+                                    <p class="text-lg text-white">The Groom</p>
+                                    <p class="text-white">Son of<br>{{groomFather}} &amp; {{groomMother}}</p>
+                                    <div class="flex justify-center space-x-4 mt-2">
+                                        <a href="{{instagramLink}}" class="social-icon text-white hover:text-gold"><i
+                                                class="fab fa-instagram"></i></a>
+                                        <a href="{{facebookLink}}" class="social-icon text-white hover:text-gold"><i
+                                                class="fab fa-facebook"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Groom -->
+                            <div class="groom reveal-item delay-300 relative z-10 flex flex-col items-center">
+                                <div class="avatar-container mb-4 mx-auto">
+                                    <div class="avatar-frame relative z-20">
+                                        <img src="{{bridePhoto}}" alt="Bride"
+                                            class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover mx-auto">
+                                    </div>
+                                </div>
+                                <!-- Nama dan Deskripsi -->
+                                <div class="relative z-20 mt-20"> <!-- Added margin-top for more spacing -->
+                                    <h3 class="font-fantasy text-3xl md:text-4xl text-gold">{{bride}}</h3>
+                                    <p class="text-lg text-white">The Bride</p>
+                                    <p class="text-white">Daughter of<br>{{brideFather}} &amp; {{brideMother}}</p>
+                                    <div class="flex justify-center space-x-4 mt-2">
+                                        <a href="{{instagramLink1}}" class="social-icon text-white hover:text-gold"><i
+                                                class="fab fa-instagram"></i></a>
+                                        <a href="{{facebookLink1}}" class="social-icon text-white hover:text-gold"><i
+                                                class="fab fa-facebook"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ayat -->
+                        <div class="mt-12 reveal-item delay-500 text-white">
+                            <p class="text-lg italic">"And of His signs is that He created for you from yourselves mates
+                                that you may find tranquility in them; and He placed between you affection and mercy."
+                            </p>
+                            <p class="mt-2">- Ar-Rum: 21 -</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="event"
+            class="min-h-screen flex items-center justify-center relative section pt-16 pb-6 md:pt-12 md:pb-6">
+            <div class="container mx-auto text-center px-4 z-10">
+                <div class="fantasy-border p-6 md:p-10 relative">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 rounded-lg"></div>
+                    <div class="relative z-10">
+                        <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">Wedding Events</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+                            <!-- Akad -->
+                            <div class="event-card reveal-item">
+                                <div class="event-icon mb-4">
+                                    <i class="fas fa-rings-wedding text-4xl text-gold"></i>
+                                </div>
+                                <h3 class="font-fantasy text-2xl md:text-3xl mb-2 text-gold">Akad Ceremony</h3>
+                                <div class="mb-2 flex justify-center items-center">
+                                    <i class="far fa-calendar-alt mr-2"></i>
+                                    <span>{{akadDate}}</span>
+                                </div>
+                                <div class="mb-2 flex justify-center items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    <span>{{akadTime}}</span>
+                                </div>
+                                <div class="mb-4 flex justify-center items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>{{akadLocation}}</span>
+                                </div>
+                                <a href="#" class="calendar-btn">
+                                    <i class="far fa-calendar-plus mr-2"></i> Add to Calendar
+                                </a>
+                            </div>
+
+                            <!-- Resepsi -->
+                            <div class="event-card reveal-item delay-300">
+                                <div class="event-icon mb-4">
+                                    <i class="fas fa-glass-cheers text-4xl text-gold"></i>
+                                </div>
+                                <h3 class="font-fantasy text-2xl md:text-3xl mb-2 text-gold">Reception</h3>
+                                <div class="mb-2 flex justify-center items-center">
+                                    <i class="far fa-calendar-alt mr-2"></i>
+                                    <span>{{receptionDate}}</span>
+                                </div>
+                                <div class="mb-2 flex justify-center items-center">
+                                    <i class="far fa-clock mr-2"></i>
+                                    <span>{{receptionTime}}</span>
+                                </div>
+                                <div class="mb-4 flex justify-center items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span>{{receptionLocation}}</span>
+                                </div>
+                                <a href="#" class="calendar-btn">
+                                    <i class="far fa-calendar-plus mr-2"></i> Add to Calendar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+        <!-- Gallery Section -->
+    <section id="gallery" class="min-h-screen flex items-center justify-center relative section pt-6 md:pt-10">
+        <div class="container mx-auto text-center px-4 z-10">
+            <div class="fantasy-border p-6 md:p-10 relative">
+                <div class="absolute inset-0 bg-black bg-opacity-60 rounded-lg"></div>
+                <div class="relative z-10">
+                    <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">Our Gallery</h2>
+    
+                    <!-- Container Slider -->
+                    <div class="relative">
+                        <!-- Tombol Previous -->
+                        <button onclick="prevSlide()"
+                            class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gold text-black p-2 rounded-full z-20">
+                            &#10094;
+                        </button>
+    
+                        <!-- List Gallery (akan diisi JavaScript) -->
+                        <div id="gallerySlider"
+                            class="flex overflow-x-auto gap-4 pb-4 scroll-smooth snap-x snap-mandatory scrollbar-hide">
+                            <!-- Galeri di-generate dari JS -->
+                        </div>
+    
+                        <!-- Tombol Next -->
+                        <button onclick="nextSlide()"
+                            class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gold text-black p-2 rounded-full z-20">
+                            &#10095;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Modal Zoom Foto -->
+        <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 hidden">
+            <div class="relative max-w-3xl w-full p-4 animate-zoomIn">
+                <button onclick="closeImageModal()" class="absolute top-2 right-2 text-white text-2xl">&times;</button>
+                <img id="modalImage" src="" alt="Zoomed Photo"
+                    class="w-full rounded-lg shadow-lg object-contain max-h-[80vh]" />
+            </div>
+        </div>
+    </section>
+
+
+        <!-- Location Section -->
+        <section id="location" class="min-h-screen flex items-center justify-center relative section">
+            <div class="container mx-auto text-center px-4 py-1 z-10">
+                <div class="fantasy-border p-6 md:p-10 relative">
+                    <div class="absolute inset-0 bg-black bg-opacity-60 rounded-lg"></div>
+                    <div class="relative z-10">
+                        <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">Wedding Location</h2>
+                        <div class="mb-8 reveal-item">
+                            <h3 class="font-fantasy text-2xl md:text-3xl mb-4 text-gold">{{location}}</h3>
+                            <p class="mb-4">{{address}}</p>
+                            <div class="map-container mb-6">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0532506972256!2d106.82276387490515!3d-6.260269893713694!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f22d2afc23f5%3A0x73f64471cda26fe!2sJakarta!5e0!3m2!1sen!2sid!4v1680230284322!5m2!1sen!2sid"
+                                    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                                    class="rounded-lg"></iframe>
+                            </div>
+                            <a href="{{mapLink}}" target="_blank" class="location-btn">
+                                <i class="fas fa-directions mr-2"></i> Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Wishes Section -->
+        <footer class="py-24 text-center">
+            <div class="container flex flex-col items-center justify-center">
+                <img src="https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746063499/n632x3kaneq11clttqlz.png"
+                    alt="Logo Rabbit Moon" class="w-40 h-auto m-0 p-0 leading-none" />
+                <p class="font-semibold text-2xl m-0 p-0 leading-none">Rabb-IT Moon</p>
+            </div>
+        </footer>
+
+
+
+
+
+
+
+    </div>
+
+    <audio id="background-music" loop>
+        <source src="{{musicLink}}" type="audio/mpeg">
+    </audio>
+
+    <script>
+         const galleryPhotos = JSON.parse('{{galleryPhotos}}'); // injek string JSON
+
+            const gallerySlider = document.getElementById("gallerySlider");
+
+            galleryPhotos.forEach((src, index) => {
+                const div = document.createElement("div");
+                div.className = "gallery-item snap-center border-2 border-gold rounded-lg";
+
+                const img = document.createElement("img");
+                img.src = src;
+                img.alt = `Foto ${index + 1}`;
+                img.className = "h-48 md:h-64 object-cover rounded-lg cursor-pointer";
+                img.onclick = () => openImageModal(src);
+
+                div.appendChild(img);
+                gallerySlider.appendChild(div);
+            });
+
+            function openImageModal(src) {
+                document.getElementById("modalImage").src = src;
+                document.getElementById("imageModal").classList.remove("hidden");
+            }
+
+            function closeImageModal() {
+                document.getElementById("imageModal").classList.add("hidden");
+            }
+
+            function nextSlide() {
+                gallerySlider.scrollBy({ left: 250, behavior: 'smooth' });
+            }
+
+            function prevSlide() {
+                gallerySlider.scrollBy({ left: -250, behavior: 'smooth' });
+            }
+        particlesJS("particles-cover", {
+            particles: {
+                number: {
+                    value: 100,
+                    density: { enable: true, value_area: 800 }
+                },
+                color: {
+                    value: ["#ffffff", "#c5b3ff", "#a8d8ff"]
+                },
+                shape: {
+                    type: "circle"
+                },
+                opacity: {
+                    value: 0.6,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 1.5,
+                        opacity_min: 0.2,
+                        sync: false
+                    }
+                },
+                size: {
+                    value: 6,
+                    random: true,
+                    anim: {
+                        enable: true,
+                        speed: 2,
+                        size_min: 1,
+                        sync: false
+                    }
+                },
+                move: {
+                    enable: true,
+                    speed: 0.6,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                },
+                line_linked: {
+                    enable: false
+                }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: {
+                        enable: true,
+                        mode: "bubble"
+                    },
+                    onclick: {
+                        enable: false
+                    },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+        particlesJS("particles-js", {
+            particles: {
+                number: { value: 80, density: { enable: true, value_area: 800 } },
+                color: { value: ["#ffffff", "#c5b3ff", "#a8d8ff"] },
+                shape: { type: "circle" },
+                opacity: {
+                    value: 0.6,
+                    random: true,
+                    anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
+                },
+                size: {
+                    value: 6,
+                    random: true,
+                    anim: { enable: true, speed: 2, size_min: 1, sync: false }
+                },
+                move: {
+                    enable: true,
+                    speed: 0.6,
+                    direction: "none",
+                    random: true,
+                    straight: false,
+                    out_mode: "out",
+                    bounce: false
+                },
+                line_linked: { enable: false }
+            },
+            interactivity: {
+                detect_on: "canvas",
+                events: {
+                    onhover: { enable: true, mode: "bubble" },
+                    onclick: { enable: false },
+                    resize: true
+                }
+            },
+            retina_detect: true
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date("{{date}}").getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            // Time calculations
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+        }
+
+        // Update countdown every second
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Open invitation function
+        function openInvitation() {
+            document.getElementById("cover").style.transform = "translateY(-100%)";
+            document.getElementById("cover").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("cover").style.display = "none";
+                document.getElementById("main-content").classList.remove("hidden");
+                const music = document.getElementById("background-music");
+                if (music) music.play().catch(err => console.warn('Autoplay blocked'));
+                activateSections();
+            }, 1000);
+        }
+
+        // Section activation on scroll
+        function activateSections() {
+            const sections = document.querySelectorAll('.section');
+            const revealItems = document.querySelectorAll('.reveal-item');
+
+            // First section should be visible immediately
+            sections[0].classList.add('active');
+
+            // Set up intersection observer for sections
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            // Set up intersection observer for reveal items
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all sections
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Observe all reveal items
+            revealItems.forEach(item => {
+                revealObserver.observe(item);
+            });
+        }
+
+        // Navigation highlight on scroll
+        document.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Audio control
+        document.getElementById('audio-control').addEventListener('click', function () {
+            const music = document.getElementById('background-music');
+            if (music.paused) {
+                music.play();
+                this.classList.remove('fa-volume-mute');
+                this.classList.add('fa-volume-up');
+            } else {
+                music.pause();
+                this.classList.remove('fa-volume-up');
+                this.classList.add('fa-volume-mute');
+            }
+        });
+        function nextSlide() {
+            document.getElementById("gallerySlider").scrollBy({ left: 250, behavior: 'smooth' });
+        }
+
+        function prevSlide() {
+            document.getElementById("gallerySlider").scrollBy({ left: -250, behavior: 'smooth' });
+        }
+        let warningShown = false;
+
+        // Create warning modal elements and styles
+        (function createWarningModal() {
+            // Create modal container
+            const modalContainer = document.createElement('div');
+            modalContainer.id = 'inspectWarningModal';
+            modalContainer.style.display = 'none';
+            modalContainer.style.position = 'fixed';
+            modalContainer.style.top = '0';
+            modalContainer.style.left = '0';
+            modalContainer.style.width = '100%';
+            modalContainer.style.height = '100%';
+            modalContainer.style.backgroundColor = 'rgba(0,0,0,0.85)';
+            modalContainer.style.zIndex = '9999';
+            modalContainer.style.justifyContent = 'center';
+            modalContainer.style.alignItems = 'center';
+            modalContainer.style.fontFamily = 'Arial, sans-serif';
+
+            // Create modal content
+            const modalContent = document.createElement('div');
+            modalContent.style.backgroundColor = '#111';
+            modalContent.style.border = '2px solid #d4af37'; // Gold border
+            modalContent.style.borderRadius = '10px';
+            modalContent.style.padding = '30px';
+            modalContent.style.maxWidth = '400px';
+            modalContent.style.textAlign = 'center';
+            modalContent.style.boxShadow = '0 5px 15px rgba(0,0,0,0.5)';
+
+            // Create warning message
+            const warningTitle = document.createElement('h2');
+            warningTitle.textContent = 'Warning!';
+            warningTitle.style.color = '#d4af37'; // Gold color
+            warningTitle.style.marginBottom = '15px';
+            warningTitle.style.fontSize = '24px';
+
+            const warningMessage = document.createElement('p');
+            warningMessage.textContent = 'Dont do that,Please !!!';
+            warningMessage.style.color = '#fff';
+            warningMessage.style.marginBottom = '20px';
+            warningMessage.style.fontSize = '16px';
+
+            // Create OK button
+            const okButton = document.createElement('button');
+            okButton.textContent = 'OK';
+            okButton.style.backgroundColor = '#d4af37'; // Gold button
+            okButton.style.color = '#000';
+            okButton.style.border = 'none';
+            okButton.style.padding = '10px 30px';
+            okButton.style.borderRadius = '25px';
+            okButton.style.cursor = 'pointer';
+            okButton.style.fontSize = '16px';
+            okButton.style.fontWeight = 'bold';
+            okButton.style.transition = 'all 0.3s ease';
+
+            okButton.onmouseover = function () {
+                this.style.backgroundColor = '#b8941c'; // Darker gold on hover
+            };
+
+            okButton.onmouseout = function () {
+                this.style.backgroundColor = '#d4af37';
+            };
+
+            okButton.onclick = function () {
+                modalContainer.style.display = 'none';
+                warningShown = false;
+            };
+
+            // Assemble modal
+            modalContent.appendChild(warningTitle);
+            modalContent.appendChild(warningMessage);
+            modalContent.appendChild(okButton);
+            modalContainer.appendChild(modalContent);
+
+            // Add modal to document
+            document.body.appendChild(modalContainer);
+        })();
+
+        // Function to show warning modal
+        function showWarningModal() {
+            if (!warningShown) {
+                const modal = document.getElementById('inspectWarningModal');
+                if (modal) {
+                    modal.style.display = 'flex';
+                    warningShown = true;
+                }
+            }
+        }
+
+        // Disable right-click context menu
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+            showWarningModal();
+            return false;
+        });
+
+        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+        document.addEventListener('keydown', function (e) {
+            // F12 key
+            if (e.keyCode == 123) {
+                e.preventDefault();
+                showWarningModal();
+                return false;
+            }
+
+            // Ctrl+Shift+I or Ctrl+Shift+J or Ctrl+Shift+C
+            if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+                e.preventDefault();
+                showWarningModal();
+                return false;
+            }
+
+            // Ctrl+U
+            if (e.ctrlKey && e.keyCode === 85) {
+                e.preventDefault();
+                showWarningModal();
+                return false;
+            }
+        });
+
+        // Disable console features detection
+        let consoleOpenDetectEnabled = false;
+
+        // We'll use a more direct approach only
+        // Skip the devtools detection that might be causing false positives
+        // Remove automatic continuous checks
+
+        // Prevent viewing source in some browsers
+        if (window.find) {
+            window.find = function () {
+                showWarningModal();
+                return false;
+            }
+        }
+
+        // We won't use the debugger trap as it may cause performance issues
+        // and trigger false positives
+
+        // Disable console messages but in a safer way
+        const originalConsole = {
+            log: console.log,
+            warn: console.warn,
+            error: console.error
+        };
+
+        // Optional: Re-enable this if needed
+        // console.log = console.warn = console.error = function() {};
+
+        // Add a custom message if someone actually gets to the console
+        console.log = function () {
+            showWarningModal();
+            originalConsole.log("Inspection is not allowed on this page.");
+        };
+    </script>
+
+</body>
+
+</html>
