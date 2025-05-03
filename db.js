@@ -1,11 +1,11 @@
-// db.js
 const mysql = require("mysql2/promise");
 
 const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "", // Sesuaikan dengan password MySQL Anda
-  database: "wedding_db", // Ganti dengan nama database Anda
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT, // default port MySQL
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,
