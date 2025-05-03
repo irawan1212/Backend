@@ -17,7 +17,7 @@ const db = require("./db");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || `https://localhost:${PORT}`;
+const BASE_URL = process.env.BASE_URL;
 
 // Midtrans configuration
 const MIDTRANS_SERVER_KEY = process.env.MIDTRANS_SERVER_KEY;
@@ -75,13 +75,13 @@ try {
 
 // GET Midtrans client key
 app.get(
-  "https://rabbit-moon.up.railway.app/api/midtrans-client-key",
+  "/api/midtrans-client-key",
   (req, res) => {
     res.json({ clientKey: MIDTRANS_CLIENT_KEY });
   }
 );
 app.get(
-  "https://rabbit-moon.up.railway.app//invitation/:slug",
+  "/invitation/:slug",
   async (req, res) => {
     const { slug } = req.params;
 
@@ -129,7 +129,7 @@ app.get(
 );
 
 app.get(
-  "https://rabbit-moon.up.railway.app/api/templates",
+  "/api/templates",
   async (req, res) => {
     try {
       const [rows] = await db.execute("SELECT * FROM templates");
@@ -149,7 +149,7 @@ app.get(
     }
   }
 );
-app.get("https://rabbit-moon.up.railway.app/api/template/:templateId/info", async (req, res) => {
+app.get("/api/template/:templateId/info", async (req, res) => {
   const { templateId } = req.params;
   try {
     const [rows] = await db.execute(
@@ -182,7 +182,7 @@ app.get("https://rabbit-moon.up.railway.app/api/template/:templateId/info", asyn
     });
   }
 });
-app.get("https://rabbit-moon.up.railway.app/api/template/:templateId", async (req, res) => {
+app.get("/api/template/:templateId", async (req, res) => {
   const { templateId } = req.params;
   try {
     const templatePath = path.join(
@@ -205,7 +205,7 @@ app.get("https://rabbit-moon.up.railway.app/api/template/:templateId", async (re
   }
 });
 app.post(
-  "https://rabbit-moon.up.railway.app/api/create-payment",
+  "/api/create-payment",
   async (req, res) => {
     const { templateId, price } = req.body;
     console.log("📥 [create-payment] Request body:", req.body);
@@ -345,7 +345,7 @@ app.post(
   }
 );
 app.post(
-  "https://rabbit-moon.up.railway.app/api/payment-notification",
+  "/api/payment-notification",
   async (req, res) => {
     try {
       const notification = req.body;
@@ -471,7 +471,7 @@ app.post(
   }
 );
 app.get(
-  "https://rabbit-moon.up.railway.app/api/payment-status/:orderId",
+  "/api/payment-status/:orderId",
   async (req, res) => {
     const { orderId } = req.params;
     console.log("📥 [payment-status] Checking status for order:", orderId);
