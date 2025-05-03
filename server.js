@@ -895,7 +895,7 @@ async function saveInvitation(data) {
 }
 
 app.post(
-  "https://rabbit-moon.up.railway.app/api/generate",
+  "/api/generate",
   async (req, res) => {
     console.log("🚀 [generate] Generate API called");
     try {
