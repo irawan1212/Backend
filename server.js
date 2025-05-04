@@ -16,7 +16,7 @@ emailService.initializeEmailTransporter();
 const db = require("./db");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT ;
 const BASE_URL = process.env.BASE_URL;
 
 // Midtrans configuration
@@ -1127,5 +1127,5 @@ function generateGalleryHTML(galleryArrayString) {
     .join("\n");
 }
 app.listen(PORT, () => {
- 
+ console.log(`🚀 Server running on port ${PORT}`);
 });
