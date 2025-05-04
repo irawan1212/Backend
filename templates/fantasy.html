@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Wedding Invitation</title>
+    <title>The Wedding of {{groom}} & {{bride}}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link
@@ -509,29 +509,37 @@
     <!-- COVER SECTION -->
     <div id="cover" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
         <div id="particles-cover"></div>
-        <div class="text-center p-8 transform transition-all duration-1000">
-            <h1 class="font-fantasy text-4xl md:text-6xl mb-4 text-gold animate-fade-in">The Wedding Of</h1>
+        <div class="text-center p-8 transform transition-all duration-1000 
+         bg-cover bg-center bg-no-repeat border-4 border-yellow-300/60 rounded-2xl shadow-2xl overflow-hidden " style="background-image: url('{{photoLink}}'); 
+            background-size: 100% 100%; background-position: center;">
+
+            <h1 class="font-fantasy text-4xl md:text-6xl mb-4 text-yellow-400 animate-fade-in">The Wedding Of</h1>
+
             <div class="flex flex-col items-center justify-center leading-tight animate-fade-in relative">
                 <!-- Groom -->
-                <h1 class="font-fantasy text-4xl md:text-5xl text-silver mb-2 -ml-12">{{groom}}</h1>
+                <h1 class="font-fantasy text-5xl md:text-6xl text-gray-200 mb-2 -ml-6">{{groom}}</h1>
 
                 <!-- & Symbol -->
-                <h1 class="font-fantasy text-3xl md:text-4xl text-silver">&</h1>
+                <h1 class="font-fantasy text-3xl md:text-4xl text-gray-100">&</h1>
 
                 <!-- Bride -->
-                <h1 class="font-fantasy text-4xl md:text-5xl text-silver mt-2 -mr-12">{{bride}}</h1>
+                <h1 class="font-fantasy text-5xl md:text-6xl text-gray-200 mt-2 -mr-6">{{bride}}</h1>
             </div>
-            <p class=" text-lg mb-4">Dear</p>
-            <p class=" font-fantasy text-4xl md:text-4xl mb-4 text-silver animate-fade-in">{{guest}}</p>
-            <p class=" text-lg mb-4">You're Invited to Our Wedding</p>
+
+            <p class="text-lg text-white mt-6">Dear</p>
+            <p class="font-fantasy text-4xl md:text-4xl mb-4 text-gray-100 animate-fade-in">{{guest}}</p>
+            <p class="text-lg text-white mb-6">You're Invited to Our Wedding</p>
+
             <button onclick="openInvitation()" id="open-invitation"
-                class="px-8 py-3 bg-gold text-black rounded-full hover:bg-gold-dark transform hover:scale-105 transition duration-300 flex items-center inline-flex">
+                class="px-8 py-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transform hover:scale-105 transition duration-300 flex items-center inline-flex">
                 <i class="fas fa-envelope-open-text mr-2"></i> Open Invitation
             </button>
-            <div class="mt-8 text-sm opacity-70">
+
+            <div class="mt-8 text-sm text-white/70">
                 <p>Please tap the button to open our invitation</p>
             </div>
         </div>
+
     </div>
 
     <!-- MAIN CONTENT -->
@@ -622,24 +630,25 @@
         <section id="couple" class="min-h-screen flex items-center justify-center relative section py-16 md:py-24">
             <div class="container mx-auto text-center px-4 z-10">
                 <div class="fantasy-border p-6 md:p-10 relative z-10">
-                    <!-- Background overlay -->
+                    <!-- Content with background -->
+                    <div class="relative z-10 bg-cover bg-center rounded-lg" style="background-image: url('{{photoLink}}'); 
+                    background-size: 100% 100%; background-position: center;">
 
+                        <!-- Overlay transparan hanya untuk background -->
+                        <div class="absolute inset-0 bg-black/10 rounded-lg z-0"></div>
 
-                    <!-- Content -->
-                    <div class="relative z-10 bg-cover bg-center rounded-lg"
-                        style="background-image: url('{{photoLink}}');">
-                        <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">The Bride & Groom</h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
+                        <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold relative z-10">The Bride & Groom
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 relative z-10">
                             <!-- Bride -->
-                            <div class="bride reveal-item relative z-10 flex flex-col items-center">
+                            <div class="bride reveal-item flex flex-col items-center">
                                 <div class="avatar-container mb-4 mx-auto">
                                     <div class="avatar-frame relative z-20">
                                         <img src="{{groomPhoto}}" alt="Groom"
                                             class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover mx-auto">
                                     </div>
                                 </div>
-                                <!-- Nama dan Deskripsi -->
-                                <div class="relative z-20 mt-20"> <!-- Added margin-top for more spacing -->
+                                <div class="relative z-20 mt-20">
                                     <h3 class="font-fantasy text-3xl md:text-4xl text-gold">{{groom}}</h3>
                                     <p class="text-lg text-white">The Groom</p>
                                     <p class="text-white">Son of<br>{{groomFather}} &amp; {{groomMother}}</p>
@@ -653,15 +662,14 @@
                             </div>
 
                             <!-- Groom -->
-                            <div class="groom reveal-item delay-300 relative z-10 flex flex-col items-center">
+                            <div class="groom reveal-item delay-300 flex flex-col items-center">
                                 <div class="avatar-container mb-4 mx-auto">
                                     <div class="avatar-frame relative z-20">
                                         <img src="{{bridePhoto}}" alt="Bride"
                                             class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover mx-auto">
                                     </div>
                                 </div>
-                                <!-- Nama dan Deskripsi -->
-                                <div class="relative z-20 mt-20"> <!-- Added margin-top for more spacing -->
+                                <div class="relative z-20 mt-20">
                                     <h3 class="font-fantasy text-3xl md:text-4xl text-gold">{{bride}}</h3>
                                     <p class="text-lg text-white">The Bride</p>
                                     <p class="text-white">Daughter of<br>{{brideFather}} &amp; {{brideMother}}</p>
@@ -676,16 +684,12 @@
                         </div>
 
                         <!-- Ayat -->
-                        <div class="mt-12 reveal-item delay-500 text-white">
-                            <p class="text-lg italic">"And of His signs is that He created for you from yourselves mates
-                                that you may find tranquility in them; and He placed between you affection and mercy."
-                            </p>
-                            <p class="mt-2">- Ar-Rum: 21 -</p>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
         </section>
+
         <section id="event"
             class="min-h-screen flex items-center justify-center relative section pt-16 pb-6 md:pt-12 md:pb-6">
             <div class="container mx-auto text-center px-4 z-10">
