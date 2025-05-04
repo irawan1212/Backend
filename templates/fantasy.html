@@ -239,7 +239,7 @@
             border-radius: 10px;
             cursor: pointer;
             transition: var(--transition);
-            border: 2px solid var(--color-gold);
+            border: 2px solid transparent;
         }
 
         .gallery-item:hover {
@@ -542,7 +542,7 @@
 
         <!-- Navigation -->
         <nav class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-30 flex justify-center items-center 
-          backdrop-blur-md text-white rounded-full px-4 py-2 space-x-4 md:space-x-6 shadow-xl">
+                  backdrop-blur-md text-white rounded-full px-4 py-2 space-x-4 md:space-x-6 shadow-xl">
             <a href="#home" class="nav-item hover:text-gold text-xl md:text-2xl transition">
                 <i class="fas fa-home"></i>
             </a>
@@ -686,7 +686,6 @@
                 </div>
             </div>
         </section>
-
         <section id="event"
             class="min-h-screen flex items-center justify-center relative section pt-16 pb-6 md:pt-12 md:pb-6">
             <div class="container mx-auto text-center px-4 z-10">
@@ -749,7 +748,6 @@
 
 
 
-        <!-- Gallery Section -->
         <section id="gallery" class="min-h-screen flex items-center justify-center relative section pt-6 md:pt-10">
             <div class="container mx-auto text-center px-4 z-10">
                 <div class="fantasy-border p-6 md:p-10 relative">
@@ -793,7 +791,6 @@
             </div>
         </section>
 
-
         <!-- Location Section -->
         <section id="location" class="min-h-screen flex items-center justify-center relative section">
             <div class="container mx-auto text-center px-4 py-1 z-10">
@@ -833,7 +830,6 @@
 
 
 
-
     </div>
 
     <audio id="background-music" loop>
@@ -841,254 +837,6 @@
     </audio>
 
     <script>
-        const galleryPhotos = JSON.parse('{{galleryPhotos}}'); // injek string JSON
-
-        const gallerySlider = document.getElementById("gallerySlider");
-
-        galleryPhotos.forEach((src, index) => {
-            const div = document.createElement("div");
-            div.className = "gallery-item snap-center border-2 border-gold rounded-lg";
-
-            const img = document.createElement("img");
-            img.src = src;
-            img.alt = `Foto ${index + 1}`;
-            img.className = "h-48 md:h-64 object-cover rounded-lg cursor-pointer";
-            img.onclick = () => openImageModal(src);
-
-            div.appendChild(img);
-            gallerySlider.appendChild(div);
-        });
-
-        function openImageModal(src) {
-            document.getElementById("modalImage").src = src;
-            document.getElementById("imageModal").classList.remove("hidden");
-        }
-
-        function closeImageModal() {
-            document.getElementById("imageModal").classList.add("hidden");
-        }
-
-        function nextSlide() {
-            gallerySlider.scrollBy({ left: 250, behavior: 'smooth' });
-        }
-
-        function prevSlide() {
-            gallerySlider.scrollBy({ left: -250, behavior: 'smooth' });
-        }
-        particlesJS("particles-cover", {
-            particles: {
-                number: {
-                    value: 100,
-                    density: { enable: true, value_area: 800 }
-                },
-                color: {
-                    value: ["#ffffff", "#c5b3ff", "#a8d8ff"]
-                },
-                shape: {
-                    type: "circle"
-                },
-                opacity: {
-                    value: 0.6,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 1.5,
-                        opacity_min: 0.2,
-                        sync: false
-                    }
-                },
-                size: {
-                    value: 6,
-                    random: true,
-                    anim: {
-                        enable: true,
-                        speed: 2,
-                        size_min: 1,
-                        sync: false
-                    }
-                },
-                move: {
-                    enable: true,
-                    speed: 0.6,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                },
-                line_linked: {
-                    enable: false
-                }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: "bubble"
-                    },
-                    onclick: {
-                        enable: false
-                    },
-                    resize: true
-                }
-            },
-            retina_detect: true
-        });
-        particlesJS("particles-js", {
-            particles: {
-                number: { value: 80, density: { enable: true, value_area: 800 } },
-                color: { value: ["#ffffff", "#c5b3ff", "#a8d8ff"] },
-                shape: { type: "circle" },
-                opacity: {
-                    value: 0.6,
-                    random: true,
-                    anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
-                },
-                size: {
-                    value: 6,
-                    random: true,
-                    anim: { enable: true, speed: 2, size_min: 1, sync: false }
-                },
-                move: {
-                    enable: true,
-                    speed: 0.6,
-                    direction: "none",
-                    random: true,
-                    straight: false,
-                    out_mode: "out",
-                    bounce: false
-                },
-                line_linked: { enable: false }
-            },
-            interactivity: {
-                detect_on: "canvas",
-                events: {
-                    onhover: { enable: true, mode: "bubble" },
-                    onclick: { enable: false },
-                    resize: true
-                }
-            },
-            retina_detect: true
-        });
-
-        // Countdown Timer
-        function updateCountdown() {
-            const weddingDate = new Date("{{date}}").getTime();
-            const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            // Time calculations
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            // Display the result
-            document.getElementById("days").innerText = String(days).padStart(2, '0');
-            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
-            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
-            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
-        }
-
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-
-        // Open invitation function
-        function openInvitation() {
-            document.getElementById("cover").style.transform = "translateY(-100%)";
-            document.getElementById("cover").style.opacity = "0";
-            setTimeout(() => {
-                document.getElementById("cover").style.display = "none";
-                document.getElementById("main-content").classList.remove("hidden");
-                const music = document.getElementById("background-music");
-                if (music) music.play().catch(err => console.warn('Autoplay blocked'));
-                activateSections();
-            }, 1000);
-        }
-
-        // Section activation on scroll
-        function activateSections() {
-            const sections = document.querySelectorAll('.section');
-            const revealItems = document.querySelectorAll('.reveal-item');
-
-            // First section should be visible immediately
-            sections[0].classList.add('active');
-
-            // Set up intersection observer for sections
-            const sectionObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            // Set up intersection observer for reveal items
-            const revealObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            // Observe all sections
-            sections.forEach(section => {
-                sectionObserver.observe(section);
-            });
-
-            // Observe all reveal items
-            revealItems.forEach(item => {
-                revealObserver.observe(item);
-            });
-        }
-
-        // Navigation highlight on scroll
-        document.addEventListener('scroll', function () {
-            const sections = document.querySelectorAll('section');
-            const navItems = document.querySelectorAll('.nav-item');
-
-            let current = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                if (window.pageYOffset >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navItems.forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('href') === `#${current}`) {
-                    item.classList.add('active');
-                }
-            });
-        });
-
-        // Audio control
-        document.getElementById('audio-control').addEventListener('click', function () {
-            const music = document.getElementById('background-music');
-            if (music.paused) {
-                music.play();
-                this.classList.remove('fa-volume-mute');
-                this.classList.add('fa-volume-up');
-            } else {
-                music.pause();
-                this.classList.remove('fa-volume-up');
-                this.classList.add('fa-volume-mute');
-            }
-        });
-        function nextSlide() {
-            document.getElementById("gallerySlider").scrollBy({ left: 250, behavior: 'smooth' });
-        }
-
-        function prevSlide() {
-            document.getElementById("gallerySlider").scrollBy({ left: -250, behavior: 'smooth' });
-        }
-        let warningShown = false;
-
         // Create warning modal elements and styles
         (function createWarningModal() {
             // Create modal container
@@ -1124,7 +872,7 @@
             warningTitle.style.fontSize = '24px';
 
             const warningMessage = document.createElement('p');
-            warningMessage.textContent = 'Dont do that,Please !!!';
+            warningMessage.textContent = 'Please don\'t do that!';
             warningMessage.style.color = '#fff';
             warningMessage.style.marginBottom = '20px';
             warningMessage.style.fontSize = '16px';
@@ -1164,6 +912,9 @@
             // Add modal to document
             document.body.appendChild(modalContainer);
         })();
+
+        // Initialize variables
+        let warningShown = false;
 
         // Function to show warning modal
         function showWarningModal() {
@@ -1207,13 +958,6 @@
             }
         });
 
-        // Disable console features detection
-        let consoleOpenDetectEnabled = false;
-
-        // We'll use a more direct approach only
-        // Skip the devtools detection that might be causing false positives
-        // Remove automatic continuous checks
-
         // Prevent viewing source in some browsers
         if (window.find) {
             window.find = function () {
@@ -1222,24 +966,351 @@
             }
         }
 
-        // We won't use the debugger trap as it may cause performance issues
-        // and trigger false positives
-
-        // Disable console messages but in a safer way
+        // Preserve original console functions
         const originalConsole = {
             log: console.log,
             warn: console.warn,
             error: console.error
         };
 
-        // Optional: Re-enable this if needed
-        // console.log = console.warn = console.error = function() {};
-
-        // Add a custom message if someone actually gets to the console
+        // Override console.log
         console.log = function () {
             showWarningModal();
             originalConsole.log("Inspection is not allowed on this page.");
         };
+
+        // Initialize particles if the function exists
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize particles for cover if element and function exist
+            if (typeof particlesJS === 'function' && document.getElementById('particles-cover')) {
+                particlesJS("particles-cover", {
+                    particles: {
+                        number: {
+                            value: 100,
+                            density: { enable: true, value_area: 800 }
+                        },
+                        color: {
+                            value: ["#ffffff", "#c5b3ff", "#a8d8ff"]
+                        },
+                        shape: {
+                            type: "circle"
+                        },
+                        opacity: {
+                            value: 0.6,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 1.5,
+                                opacity_min: 0.2,
+                                sync: false
+                            }
+                        },
+                        size: {
+                            value: 6,
+                            random: true,
+                            anim: {
+                                enable: true,
+                                speed: 2,
+                                size_min: 1,
+                                sync: false
+                            }
+                        },
+                        move: {
+                            enable: true,
+                            speed: 0.6,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
+                        },
+                        line_linked: {
+                            enable: false
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: "bubble"
+                            },
+                            onclick: {
+                                enable: false
+                            },
+                            resize: true
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+
+            // Initialize particles for main content if element and function exist
+            if (typeof particlesJS === 'function' && document.getElementById('particles-js')) {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: ["#ffffff", "#c5b3ff", "#a8d8ff"] },
+                        shape: { type: "circle" },
+                        opacity: {
+                            value: 0.6,
+                            random: true,
+                            anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
+                        },
+                        size: {
+                            value: 6,
+                            random: true,
+                            anim: { enable: true, speed: 2, size_min: 1, sync: false }
+                        },
+                        move: {
+                            enable: true,
+                            speed: 0.6,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
+                        },
+                        line_linked: { enable: false }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "bubble" },
+                            onclick: { enable: false },
+                            resize: true
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        });
+
+        // Countdown Timer
+        function updateCountdown() {
+            // Check if the date template variable has been replaced with an actual date
+            const weddingDateStr = "{{date}}";
+            if (weddingDateStr.startsWith("{{") && weddingDateStr.endsWith("}}")) {
+                console.warn("Wedding date not set properly");
+                return;
+            }
+
+            try {
+                const weddingDate = new Date(weddingDateStr).getTime();
+                const now = new Date().getTime();
+                const distance = weddingDate - now;
+
+                // Time calculations
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Display the result if elements exist
+                if (document.getElementById("days")) {
+                    document.getElementById("days").innerText = String(days).padStart(2, '0');
+                }
+                if (document.getElementById("hours")) {
+                    document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+                }
+                if (document.getElementById("minutes")) {
+                    document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+                }
+                if (document.getElementById("seconds")) {
+                    document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+                }
+            } catch (e) {
+                console.warn("Error updating countdown:", e);
+            }
+        }
+
+        // Set up countdown timer when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            // Update countdown every second if elements exist
+            if (document.getElementById("days") ||
+                document.getElementById("hours") ||
+                document.getElementById("minutes") ||
+                document.getElementById("seconds")) {
+                setInterval(updateCountdown, 1000);
+                updateCountdown();
+            }
+        });
+
+        // Open invitation function
+        function openInvitation() {
+            const coverElement = document.getElementById("cover");
+            const mainContent = document.getElementById("main-content");
+
+            if (coverElement) {
+                coverElement.style.transform = "translateY(-100%)";
+                coverElement.style.opacity = "0";
+
+                setTimeout(() => {
+                    coverElement.style.display = "none";
+
+                    if (mainContent) {
+                        mainContent.classList.remove("hidden");
+                    }
+
+                    const music = document.getElementById("background-music");
+                    if (music) {
+                        music.play().catch(err => console.warn('Autoplay blocked'));
+                    }
+
+                    activateSections();
+                }, 1000);
+            }
+        }
+
+        // Section activation on scroll
+        function activateSections() {
+            const sections = document.querySelectorAll('.section');
+            const revealItems = document.querySelectorAll('.reveal-item');
+
+            // First section should be visible immediately
+            if (sections.length > 0) {
+                sections[0].classList.add('active');
+            }
+
+            // Set up intersection observer for sections
+            const sectionObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            // Set up intersection observer for reveal items
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            // Observe all sections
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+
+            // Observe all reveal items
+            revealItems.forEach(item => {
+                revealObserver.observe(item);
+            });
+        }
+
+        // Navigation highlight on scroll
+        document.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.nav-item');
+
+            if (sections.length === 0 || navItems.length === 0) return;
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}`) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Set up audio control when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            const audioControl = document.getElementById('audio-control');
+            if (audioControl) {
+                audioControl.addEventListener('click', function () {
+                    const music = document.getElementById('background-music');
+                    if (!music) return;
+
+                    if (music.paused) {
+                        music.play();
+                        this.classList.remove('fa-volume-mute');
+                        this.classList.add('fa-volume-up');
+                    } else {
+                        music.pause();
+                        this.classList.remove('fa-volume-up');
+                        this.classList.add('fa-volume-mute');
+                    }
+                });
+            }
+        });
+
+        // Set up gallery when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function () {
+            try {
+                // Check if galleryPhotos exists and is properly formatted
+                const galleryPhotosStr = '{{galleryPhotos}}';
+                if (galleryPhotosStr.startsWith('{{') && galleryPhotosStr.endsWith('}}')) {
+                    console.warn("Gallery photos not set");
+                    return;
+                }
+
+                const galleryPhotos = JSON.parse(galleryPhotosStr);
+                const gallerySlider = document.getElementById("gallerySlider");
+
+                if (!gallerySlider || !Array.isArray(galleryPhotos)) return;
+
+                galleryPhotos.forEach((src, index) => {
+                    const div = document.createElement("div");
+                    div.className = "gallery-item snap-center border-2 border-gold rounded-lg";
+
+                    const img = document.createElement("img");
+                    img.src = src;
+                    img.alt = `Foto ${index + 1}`;
+                    img.className = "h-48 md:h-64 object-cover rounded-lg cursor-pointer";
+                    img.onclick = () => openImageModal(src);
+
+                    div.appendChild(img);
+                    gallerySlider.appendChild(div);
+                });
+            } catch (e) {
+                console.warn("Error setting up gallery:", e);
+            }
+        });
+
+        // Image modal functions
+        function openImageModal(src) {
+            const imageModal = document.getElementById("imageModal");
+            const modalImage = document.getElementById("modalImage");
+
+            if (imageModal && modalImage) {
+                modalImage.src = src;
+                imageModal.classList.remove("hidden");
+            }
+        }
+
+        function closeImageModal() {
+            const imageModal = document.getElementById("imageModal");
+            if (imageModal) {
+                imageModal.classList.add("hidden");
+            }
+        }
+
+        // Gallery navigation functions
+        function nextSlide() {
+            const gallerySlider = document.getElementById("gallerySlider");
+            if (gallerySlider) {
+                gallerySlider.scrollBy({ left: 250, behavior: 'smooth' });
+            }
+        }
+
+        function prevSlide() {
+            const gallerySlider = document.getElementById("gallerySlider");
+            if (gallerySlider) {
+                gallerySlider.scrollBy({ left: -250, behavior: 'smooth' });
+            }
+        }
     </script>
 
 </body>
