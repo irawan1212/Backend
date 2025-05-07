@@ -7,8 +7,7 @@
     <title>The Wedding of {{groom}} & {{bride}}</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link rel="icon"
-        href="{{photoLink}}" />
+    <link rel="icon" href="{{photoLink}}" />
     <link
         href="https://fonts.googleapis.com/css2?family=Tangerine:wght@700&family=Montserrat:wght@300;400;500&display=swap"
         rel="stylesheet">
@@ -16,7 +15,8 @@
         rel="stylesheet">
 
     <!-- Add particles.js library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
     <style>
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -44,7 +44,7 @@
             color: var(--color-white);
             overflow-x: hidden;
 
-            background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344773/p5sjaz0mvrauacj5ozcc.png');
+            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573637/background_xtyl8p.jpg');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -69,7 +69,7 @@
 
         /* Cover Screen */
         #cover {
-            background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344773/p5sjaz0mvrauacj5ozcc.png');
+            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573637/background_xtyl8p.jpg');
             background-size: 140%;
             background-position: center;
             background-repeat: no-repeat;
@@ -83,10 +83,30 @@
             position: absolute;
             top: 0;
             left: 0;
+            bottom: 0;
+            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573641/bl_ysxdjj.webp');
+            z-index: 1;
+            width: 45%;
+            /* Atur sesuai kebutuhan */
+            background-size: cover;
+            background-position: center;
+        }
+
+        #cover::after {
+            content: '';
+            position: absolute;
+            top: 0;
             right: 0;
             bottom: 0;
-            z-index: -1;
+            width: 50%;
+            /* Atur sesuai kebutuhan */
+            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573638/tr_dnuppp.webp');
+
+            background-size: cover;
+            background-position: center;
+
         }
+
 
         @media (max-width: 768px) {
             .countdown-item {
@@ -629,21 +649,28 @@
 <body class="font-sans bg-black text-white overflow-x-hidden">
 
     <!-- Particles Container (Single container for both cover and main content) -->
-    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+    <div id="particles-js" class="absolute inset-0 z-0"></div>
+
+
+
+    <!-- COVER SECTION -->
 
 
     <!-- COVER SECTION -->
     <div id="cover" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
-        <div id="particles-cover"></div>
+        <!-- Partikel -->
+        <div id="particles-cover" class="absolute inset-0 z-0"></div>
+
+        <!-- Kontainer Utama -->
         <div class="relative text-center p-8 transform transition-all duration-1000 
-        bg-no-repeat border-4 border-yellow-300/60 rounded-2xl shadow-2xl overflow-hidden" style="background-image: url('{{photoLink}}'); 
+        bg-transparent border-4 border-yellow-300/60 rounded-2xl shadow-2xl overflow-hidden" style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573637/background_xtyl8p.jpg'); 
         background-size: cover; background-position: center;">
 
-            <!-- Overlay for darkening background -->
-            <div class="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
+            <!-- Overlay untuk gelapkan background -->
+            <div class="absolute inset-0 bg-black/40 pointer-events-none z-10"></div>
 
-            <!-- Content -->
-            <div class="relative z-10">
+            <!-- Konten utama -->
+            <div class="relative z-1000 text-center p-8">
                 <h1 class="font-fantasy text-2xl sm:text-4xl md:text-6xl text-gold animate-fade-in-up leading-tight">
                     The Wedding Of
                 </h1>
@@ -668,12 +695,13 @@
                     <i class="fas fa-envelope-open-text mr-2"></i> Open Invitation
                 </button>
 
-                <div class="mt-8 text-sm text-white/70">
+                <div class="mt-8 text-sm text-gold">
                     <p>Please tap the button to open our invitation</p>
                 </div>
             </div>
         </div>
     </div>
+
 
     <div id="main-content" class="hidden">
         <!-- Audio control button remains unchanged -->
@@ -706,8 +734,7 @@
 
         <!-- NEW LAYOUT STRUCTURE -->
         <div class="side-photo-container">
-            <img src="{{photoLink}}"
-                alt="Wedding decorative side photo" />
+            <img src="{{PhotoLink}}" alt="Wedding decorative side photo" />
             <div class="side-photo-overlay"></div>
             <div class="side-photo-text">
                 <p class="wedding-title">Our Wedding Invitation</p>
@@ -731,7 +758,7 @@
 
                         <!-- Container dengan latar belakang -->
                         <div class="relative z-10 bg-cover bg-center rounded-lg overflow-hidden"
-                            style="background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344773/p5sjaz0mvrauacj5ozcc.png'); background-size: cover; background-position: center;">
+                            style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573642/bg_ueqlae.webp'); background-size: cover; background-position: center;">
 
                             <!-- Overlay transparan -->
                             <div class="absolute inset-0 bg-black/50 rounded-lg z-0"></div>
@@ -798,7 +825,7 @@
                 <div class="container mx-auto text-center px-4 z-10">
                     <div class="fantasy-border p-6 md:p-10 relative z-10">
                         <!-- Container dengan latar belakang -->
-                        <div class="relative z-10 bg-cover bg-center rounded-lg" style="background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344773/p5sjaz0mvrauacj5ozcc.png'); 
+                        <div class="relative z-10 bg-cover bg-center rounded-lg" style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573642/bg_ueqlae.webp'); 
                         background-size: cover; background-position: center;">
 
                             <!-- Overlay transparan untuk background -->
@@ -872,7 +899,7 @@
                     <div class="fantasy-border p-6 md:p-10 relative z-10">
                         <!-- Container dengan latar belakang -->
                         <div class="relative z-10 bg-cover bg-center rounded-lg"
-                            style="background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344773/p5sjaz0mvrauacj5ozcc.png'); background-size: cover; background-position: center;">
+                            style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573642/bg_ueqlae.webp'); background-size: cover; background-position: center;">
 
                             <!-- Overlay transparan untuk background -->
                             <div class="absolute inset-0 bg-black/50 rounded-lg z-0"></div>
@@ -945,7 +972,7 @@
 
                         <!-- Container dengan latar belakang -->
                         <div class="relative z-10 bg-cover bg-center rounded-lg overflow-hidden"
-                            style="background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344773/p5sjaz0mvrauacj5ozcc.png'); background-size: cover; background-position: center;">
+                            style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573642/bg_ueqlae.webp'); background-size: cover; background-position: center;">
 
                             <!-- Overlay transparan -->
                             <div class="absolute inset-0 bg-black/50 rounded-lg z-0"></div>
@@ -1011,7 +1038,7 @@
 
                         <!-- Container dengan latar belakang -->
                         <div class="relative z-10 bg-cover bg-center rounded-lg overflow-hidden"
-                            style="background-image: url('https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344773/p5sjaz0mvrauacj5ozcc.png'); background-size: cover; background-position: center;">
+                            style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573642/bg_ueqlae.webp'); background-size: cover; background-position: center;">
 
                             <!-- Overlay transparan -->
                             <div class="absolute inset-0 bg-black/50 rounded-lg z-0"></div>
@@ -1168,7 +1195,7 @@
             return false;
         });
 
-        // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+           
         document.addEventListener('keydown', function (e) {
             // F12 key
             if (e.keyCode == 123) {
@@ -1214,112 +1241,134 @@
         };
 
         // Initialize particles if the function exists
-        document.addEventListener('DOMContentLoaded', function () {
-            // Initialize particles for cover if element and function exist
-            if (typeof particlesJS === 'function' && document.getElementById('particles-cover')) {
-                particlesJS("particles-cover", {
-                    particles: {
-                        number: {
-                            value: 100,
-                            density: { enable: true, value_area: 800 }
-                        },
-                        color: {
-                            value: ["#ffffff", "#c5b3ff", "#a8d8ff"]
-                        },
-                        shape: {
-                            type: "circle"
-                        },
-                        opacity: {
-                            value: 0.6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 1.5,
-                                opacity_min: 0.2,
-                                sync: false
-                            }
-                        },
-                        size: {
-                            value: 6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 2,
-                                size_min: 1,
-                                sync: false
-                            }
-                        },
-                        move: {
-                            enable: true,
-                            speed: 0.6,
-                            direction: "none",
-                            random: true,
-                            straight: false,
-                            out_mode: "out",
-                            bounce: false
-                        },
-                        line_linked: {
-                            enable: false
-                        }
-                    },
-                    interactivity: {
-                        detect_on: "canvas",
-                        events: {
-                            onhover: {
-                                enable: true,
-                                mode: "bubble"
+        document.addEventListener('DOMContentLoaded', async function () {
+            // Load tsParticles only if available
+            if (window.tsParticles) {
+                // Untuk #particles-cover
+                if (document.getElementById('particles-cover')) {
+                    await tsParticles.load("particles-cover", {
+                        particles: {
+                            number: {
+                                value: 20,
+                                density: { enable: true, area: 800 }
                             },
-                            onclick: {
-                                enable: false
+                            color: {
+                                value: "#ffffff"
                             },
-                            resize: true
-                        }
-                    },
-                    retina_detect: true
-                });
-            }
+                            shape: {
+                                type: "image",
+                                image: [
+                                    {
+                                        src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600280/ChatGPT_Image_May_7_2025_01_19_45_PM_eii3vd.png",
+                                        width: 32,
+                                        height: 32
+                                    },
+                                    {
+                                        src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600281/ChatGPT_Image_May_7_2025_01_43_09_PM_m0pota.png",
+                                        width: 32,
+                                        height: 32
+                                    },
+                                    {
+                                        src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600281/ChatGPT_Image_May_7_2025_01_16_50_PM_zhamep.png",
+                                        width: 32,
+                                        height: 32
+                                    }
+                                ]
 
-            // Initialize particles for main content if element and function exist
-            if (typeof particlesJS === 'function' && document.getElementById('particles-js')) {
-                particlesJS("particles-js", {
-                    particles: {
-                        number: { value: 80, density: { enable: true, value_area: 800 } },
-                        color: { value: ["#ffffff", "#c5b3ff", "#a8d8ff"] },
-                        shape: { type: "circle" },
-                        opacity: {
-                            value: 0.6,
-                            random: true,
-                            anim: { enable: true, speed: 1.5, opacity_min: 0.2, sync: false }
+                            },
+                            opacity: {
+                                value: 0.5,
+                                random: true
+                            },
+                            size: {
+                                value: 4,
+                                random: true
+                            },
+                            move: {
+                                enable: true,
+                                speed: 1,
+                                direction: "bottom",
+                                outModes: { default: "out" }
+                            },
+                            links: {
+                                enable: false
+                            }
                         },
-                        size: {
-                            value: 6,
-                            random: true,
-                            anim: { enable: true, speed: 2, size_min: 1, sync: false }
+                        interactivity: {
+                            events: {
+                                onHover: { enable: false },
+                                onClick: { enable: false },
+                                resize: true
+                            }
                         },
-                        move: {
-                            enable: true,
-                            speed: 0.6,
-                            direction: "none",
-                            random: true,
-                            straight: false,
-                            out_mode: "out",
-                            bounce: false
+                        detectRetina: true
+                    });
+                }
+
+                // Untuk #particles-js
+                if (document.getElementById('particles-js')) {
+                    await tsParticles.load("particles-js", {
+                        particles: {
+                            number: {
+                                value: 20,
+                                density: {
+                                    enable: true,
+                                    area: 800
+                                }
+                            },
+                            shape: {
+                                type: "image",
+                                image: [
+                                    {
+                                        src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600280/ChatGPT_Image_May_7_2025_01_19_45_PM_eii3vd.png",
+                                        width: 32,
+                                        height: 32
+                                    },
+                                    {
+                                        src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600281/ChatGPT_Image_May_7_2025_01_43_09_PM_m0pota.png",
+                                        width: 32,
+                                        height: 32
+                                    },
+                                    {
+                                        src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600281/ChatGPT_Image_May_7_2025_01_16_50_PM_zhamep.png",
+                                        width: 32,
+                                        height: 32
+                                    }
+                                ]
+                            },
+                            size: {
+                                value: 20,
+                                random: true
+                            },
+                            move: {
+                                enable: true,
+                                speed: 1,
+                                direction: "bottom",
+                                random: true,
+                                straight: false,
+                                outModes: { default: "out" },
+                                bounce: false
+                            },
+                            opacity: {
+                                value: 0.8,
+                                random: true
+                            },
+                            links: {
+                                enable: false
+                            }
                         },
-                        line_linked: { enable: false }
-                    },
-                    interactivity: {
-                        detect_on: "canvas",
-                        events: {
-                            onhover: { enable: true, mode: "bubble" },
-                            onclick: { enable: false },
-                            resize: true
-                        }
-                    },
-                    retina_detect: true
-                });
+                        interactivity: {
+                            events: {
+                                onHover: { enable: false },
+                                onClick: { enable: false },
+                                resize: true
+                            }
+                        },
+                        detectRetina: true
+                    });
+                }
             }
         });
-
         // Countdown Timer
         function updateCountdown() {
             // Check if the date template variable has been replaced with an actual date
@@ -1545,6 +1594,18 @@
                 gallerySlider.scrollBy({ left: -250, behavior: 'smooth' });
             }
         }
+        tsParticles.load("tsparticles", {
+            fullScreen: { enable: true },
+            particles: {
+                number: { value: 80 },
+                color: { value: "#d4af37" },
+                shape: { type: "circle" },
+                opacity: { value: 0.5 },
+                size: { value: 3 },
+                move: { enable: true, speed: 1 }
+            }
+        });
+
     </script>
 
 </body>
