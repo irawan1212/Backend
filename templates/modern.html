@@ -87,7 +87,7 @@
             bottom: 0;
             background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573641/bl_ysxdjj.webp');
             z-index: 1;
-            width: 40%;
+            width: 45%;
             /* Atur sesuai kebutuhan */
             background-size: cover;
             background-position: center;
@@ -99,15 +99,30 @@
             top: 0;
             right: 0;
             bottom: 0;
-            width: 43%;
-            /* Atur sesuai kebutuhan */
+            width: 48%;
+            z-index: 0;
+            /* Default */
             background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573638/tr_dnuppp.webp');
-
             background-size: cover;
             background-position: center;
-
         }
 
+        /* Atur z-index menjadi -1 pada perangkat mobile */
+        @media (max-width: 768px) {
+
+            /* Ubah 768px sesuai kebutuhan */
+            #cover::after {
+                z-index: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            /* Ubah 768px sesuai kebutuhan */
+            #cover::before {
+                z-index: -1;
+            }
+        }
 
         @media (max-width: 768px) {
             .countdown-item {
@@ -841,8 +856,8 @@
                                         <div class="avatar-container mx-auto mb-4">
                                             <div class="avatar-frame relative border-4 border-gold rounded-full overflow-hidden"
                                                 style="width: 150px; height: 150px;">
-                                                <img src="{{groomPhoto}}"
-                                                    alt="Groom" class="w-full h-full object-cover">
+                                                <img src="{{groomPhoto}}" alt="Groom"
+                                                    class="w-full h-full object-cover">
                                             </div>
                                         </div>
                                         <div class="text-content w-full mt-6">
@@ -866,8 +881,8 @@
                                         <div class="avatar-container mx-auto mb-4">
                                             <div class="avatar-frame relative border-4 border-gold rounded-full overflow-hidden"
                                                 style="width: 150px; height: 150px;">
-                                                <img src="{{bridePhoto}}"
-                                                    alt="Bride" class="w-full h-full object-cover">
+                                                <img src="{{bridePhoto}}" alt="Bride"
+                                                    class="w-full h-full object-cover">
                                             </div>
                                         </div>
                                         <div class="text-content w-full mt-6">
@@ -1604,6 +1619,7 @@
                 move: { enable: true, speed: 1 }
             }
         });
+
 
     </script>
 
