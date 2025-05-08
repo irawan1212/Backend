@@ -76,6 +76,7 @@
             transition: var(--transition);
             height: 100vh;
             width: 100vw;
+
         }
 
         #cover::before {
@@ -86,7 +87,7 @@
             bottom: 0;
             background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573641/bl_ysxdjj.webp');
             z-index: 1;
-            width: 45%;
+            width: 40%;
             /* Atur sesuai kebutuhan */
             background-size: cover;
             background-position: center;
@@ -98,7 +99,7 @@
             top: 0;
             right: 0;
             bottom: 0;
-            width: 50%;
+            width: 43%;
             /* Atur sesuai kebutuhan */
             background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573638/tr_dnuppp.webp');
 
@@ -825,60 +826,60 @@
                 <div class="container mx-auto text-center px-4 z-10">
                     <div class="fantasy-border p-6 md:p-10 relative z-10">
                         <!-- Container dengan latar belakang -->
-                        <div class="relative z-10 bg-cover bg-center rounded-lg" style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573642/bg_ueqlae.webp'); 
-                        background-size: cover; background-position: center;">
+                        <div class="relative z-10 bg-cover bg-center rounded-lg overflow-hidden"
+                            style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573642/bg_ueqlae.webp');">
 
                             <!-- Overlay transparan untuk background -->
-                            <div class="absolute inset-0 bg-black/50 rounded-lg z-0"></div>
+                            <div class="absolute inset-0 bg-black/50 z-0"></div>
 
                             <!-- Konten utama -->
                             <div class="relative z-10 p-6 md:p-10">
                                 <h2 class="font-fantasy text-4xl md:text-5xl mb-12 text-gold">The Bride & Groom</h2>
                                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16">
-                                    <!-- Bride -->
+                                    <!-- Groom -->
                                     <div class="bride reveal-item flex flex-col items-center">
-                                        <div class="avatar-container mb-4 mx-auto">
-                                            <div class="avatar-frame relative z-20">
-                                                <img src="{{groomPhoto}}" alt="Groom"
-                                                    class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover mx-auto">
+                                        <div class="avatar-container mx-auto mb-4">
+                                            <div class="avatar-frame relative border-4 border-gold rounded-full overflow-hidden"
+                                                style="width: 150px; height: 150px;">
+                                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4yFRbQ0eqtiVbRNbd4xb6t5Zi8UdCGKA-Ug&s"
+                                                    alt="Groom" class="w-full h-full object-cover">
                                             </div>
                                         </div>
-                                        <div class="relative z-20 mt-20">
-                                            <h3 class="font-fantasy text-3xl md:text-4xl text-gold">{{groom}}</h3>
-                                            <p class="text-white">Putra dari<br>Bapak {{groomFather}} &amp; Ibu
-                                                {{groomMother}}</p>
-                                            <div class="flex justify-center space-x-4 mt-2">
-                                                <a href="{{instagramLink}}"
-                                                    class="social-icon text-white hover:text-gold">
+                                        <div class="text-content w-full mt-6">
+                                            <h3 class="font-fantasy text-3xl text-gold mb-3">{{groom}}</h3>
+                                            <p class="text-gold text-base mb-1">Putra dari</p>
+                                            <p class="text-gold text-base">{{groomFather}}</p>
+                                            <p class="text-gold text-base mb-4">& {{groomMother}}</p>
+                                            <div class="social-icons flex justify-center space-x-4 mt-2">
+                                                <a href="#" class="text-gold">
                                                     <i class="fab fa-instagram"></i>
                                                 </a>
-                                                <a href="{{facebookLink}}"
-                                                    class="social-icon text-white hover:text-gold">
+                                                <a href="#" class="text-gold">
                                                     <i class="fab fa-facebook"></i>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <!-- Groom -->
+                                    <!-- Bride -->
                                     <div class="groom reveal-item delay-300 flex flex-col items-center">
-                                        <div class="avatar-container mb-4 mx-auto">
-                                            <div class="avatar-frame relative z-20">
-                                                <img src="{{bridePhoto}}" alt="Bride"
-                                                    class="rounded-full w-48 h-48 md:w-64 md:h-64 object-cover mx-auto">
+                                        <div class="avatar-container mx-auto mb-4">
+                                            <div class="avatar-frame relative border-4 border-gold rounded-full overflow-hidden"
+                                                style="width: 150px; height: 150px;">
+                                                <img src="https://images.pexels.com/photos/1391499/pexels-photo-1391499.jpeg"
+                                                    alt="Bride" class="w-full h-full object-cover">
                                             </div>
                                         </div>
-                                        <div class="relative z-20 mt-20">
-                                            <h3 class="font-fantasy text-3xl md:text-4xl text-gold">{{bride}}</h3>
-                                            <p class="text-white">Putri Dari<br>Bapak {{brideFather}} &amp; Ibu
-                                                {{brideMother}}</p>
-                                            <div class="flex justify-center space-x-4 mt-2">
-                                                <a href="{{instagramLink1}}"
-                                                    class="social-icon text-white hover:text-gold">
+                                        <div class="text-content w-full mt-6">
+                                            <h3 class="font-fantasy text-3xl text-gold mb-3">{{bride}}</h3>
+                                            <p class="text-gold text-base mb-1">Putri dari</p>
+                                            <p class="text-gold text-base">{{brideFather}}</p>
+                                            <p class="text-gold text-base mb-4">& {{brideMother}}</p>
+                                            <div class="social-icons flex justify-center space-x-4 mt-2">
+                                                <a href="#" class="text-gold">
                                                     <i class="fab fa-instagram"></i>
                                                 </a>
-                                                <a href="{{facebookLink1}}"
-                                                    class="social-icon text-white hover:text-gold">
+                                                <a href="#" class="text-gold">
                                                     <i class="fab fa-facebook"></i>
                                                 </a>
                                             </div>
@@ -886,12 +887,10 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                 </div>
             </section>
-
 
             <section id="event"
                 class="min-h-screen flex items-center justify-center relative section pt-16 pb-6 md:pt-12 md:pb-6">
@@ -1077,7 +1076,7 @@
                 <div class="container flex flex-col items-center justify-center">
                     <img src="https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746063499/n632x3kaneq11clttqlz.png"
                         alt="Logo Rabbit Moon" class="w-40 h-auto m-0 p-0 leading-none" />
-                    <p class="font-semibold text-black m-0 p-0 leading-none">Rabb-IT Moon</p>
+                    <p class="font-semibold text-black text-2xl m-0 p-0 leading-none">Rabb-IT Moon</p>
                 </div>
         </div>
     </div>
@@ -1195,7 +1194,7 @@
             return false;
         });
 
-           
+
         document.addEventListener('keydown', function (e) {
             // F12 key
             if (e.keyCode == 123) {
