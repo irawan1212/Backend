@@ -45,7 +45,7 @@
             color: var(--color-white);
             overflow-x: hidden;
 
-            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573637/background_xtyl8p.jpg');
+            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1747956007/ChatGPT_Image_May_23_2025_06_13_37_AM_mtcl82.png');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -69,15 +69,98 @@
         }
 
         /* Cover Screen */
+        /* Cover Section */
         #cover {
-            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573637/background_xtyl8p.jpg');
-            background-size: 140%;
+            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1747956007/ChatGPT_Image_May_23_2025_06_13_37_AM_mtcl82.png');
+            background-size: 110%;
             background-position: center;
             background-repeat: no-repeat;
             transition: var(--transition);
-            height: 100vh;
+            height: 138vh;
             width: 100vw;
+        }
 
+        /* Kartu undangan */
+        .invitation-card {
+            max-width: 500px;
+            width: 90%;
+            border: 4px solid rgba(255, 227, 0, 0.6);
+            border-radius: 1rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            position: relative;
+            bottom: 120px;
+        }
+
+        /* Overlay for darkening background */
+        .invitation-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Content inside invitation card */
+        .invitation-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Remove pseudo-elements to avoid interference with centering */
+        #cover::before,
+        #cover::after {
+            display: none;
+            /* Remove decorative side images */
+        }
+
+        /* Particles container */
+        #particles-cover {
+            position: absolute;
+            inset: 0;
+            height: 135vh;
+            /* Match the cover height */
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            #cover {
+                background-size: 100%;
+
+            }
+
+            .invitation-card {
+                width: 75%;
+                /* Slightly wider on smaller screens */
+                bottom: 100px;
+            }
+
+            .invitation-content {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .invitation-content {
+                padding: 1rem;
+            }
+
+            .font-fantasy.text-2xl {
+                font-size: 1.5rem;
+                /* Adjust font size for smaller screens */
+            }
+
+            .font-fantasy.text-4xl {
+                font-size: 2rem;
+            }
+
+            .font-fantasy.text-3xl {
+                font-size: 1.75rem;
+            }
         }
 
         #cover::before {
@@ -86,7 +169,7 @@
             top: 0;
             left: 0;
             bottom: 0;
-            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573641/bl_ysxdjj.webp');
+            background-image: url('1https://res.cloudinary.com/dbo48p92d/image/upload/v1746573641/bl_ysxdjj.webp');
             z-index: 1;
             width: 45%;
             /* Atur sesuai kebutuhan */
@@ -103,7 +186,7 @@
             width: 48%;
             z-index: 0;
             /* Default */
-            background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573638/tr_dnuppp.webp');
+            background-image: url('1https://res.cloudinary.com/dbo48p92d/image/upload/v1746573638/tr_dnuppp.webp');
             background-size: cover;
             background-position: center;
         }
@@ -500,22 +583,7 @@
         }
 
         /* Responsive Adjustments */
-        @media (max-width: 768px) {
-            .countdown-item {
-                width: 60px;
-                padding: 8px;
-            }
 
-            .avatar-container {
-                width: 140px;
-                height: 140px;
-            }
-
-            .nav-item {
-                width: 35px;
-                height: 35px;
-            }
-        }
 
         @media (max-width: 480px) {
             .countdown-item {
@@ -664,7 +732,7 @@
 <body class="font-sans bg-black text-white overflow-x-hidden">
 
     <!-- Particles Container (Single container for both cover and main content) -->
-<div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+    <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
 
 
 
@@ -673,41 +741,37 @@
 
 
     <!-- COVER SECTION -->
-    <div id="cover" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black">
+    <div id="cover" class="fixed inset-0 z-50 flex items-center justify-center bg-black">
         <!-- Partikel -->
-     
-<div id="particles-cover"></div>
+        <div id="particles-cover" class="absolute inset-0"></div>
         <!-- Kontainer Utama -->
-        <div class="relative text-center p-8 transform transition-all duration-1000 
-        bg-transparent border-4 border-yellow-300/60 rounded-2xl shadow-2xl overflow-hidden" style="background-image: url('https://res.cloudinary.com/dbo48p92d/image/upload/v1746573637/background_xtyl8p.jpg'); 
-        background-size: cover; background-position: center;">
-
+        <div class="invitation-card transform transition-all duration-1000">
             <!-- Overlay untuk gelapkan background -->
-            <div class="absolute inset-0 bg-black/40 pointer-events-none z-10"></div>
+            <div class="invitation-overlay"></div>
 
             <!-- Konten utama -->
-            <div class="relative z-1000 text-center p-8">
+            <div class="invitation-content">
                 <h1 class="font-fantasy text-2xl sm:text-4xl md:text-6xl text-gold animate-fade-in-up leading-tight">
                     The Wedding Of
                 </h1>
 
                 <div class="flex flex-col items-center justify-center leading-tight animate-fade-in relative">
                     <!-- Groom -->
-                    <h1 class="font-fantasy text-5xl md:text-6xl text-gold mb-2 -ml-6">{{groom}}</h1>
+                    <h1 class="font-fantasy text-4xl md:text-5xl text-gold mb-2">{{groom}}</h1>
 
                     <!-- & Symbol -->
                     <h1 class="font-fantasy text-3xl md:text-4xl text-gold">&</h1>
 
                     <!-- Bride -->
-                    <h1 class="font-fantasy text-5xl md:text-6xl text-gold mt-2 -mr-6">{{bride}}</h1>
+                    <h1 class="font-fantasy text-4xl md:text-5xl text-gold mt-2">{{bride}}</h1>
                 </div>
 
                 <p class="text-lg text-gold mt-6">Dear</p>
-                <p class="font-fantasy text-4xl md:text-4xl mb-4 text-gold animate-fade-in">{{guest}}</p>
+                <p class="font-fantasy text-3xl md:text-4xl mb-4 text-gold animate-fade-in">{{guest}}</p>
                 <p class="text-lg text-gold mb-6">You're Invited to Our Wedding</p>
 
                 <button onclick="openInvitation()" id="open-invitation"
-                    class="px-8 py-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transform hover:scale-105 transition duration-300 flex items-center inline-flex">
+                    class="px-8 py-3 bg-yellow-400 text-black rounded-full hover:bg-yellow-500 transform hover:scale-105 transition duration-300 inline-flex items-center justify-center mx-auto">
                     <i class="fas fa-envelope-open-text mr-2"></i> Open Invitation
                 </button>
 
@@ -1089,7 +1153,7 @@
             <!-- Wishes Section -->
             <footer class="py-24 text-center">
                 <div class="container flex flex-col items-center justify-center">
-                    <img src="https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746063499/n632x3kaneq11clttqlz.png"
+                    <img src="https://res.cloudinary.com/dzwdwkiw0/image/upload/v1746344425/cybtw96xsu18neqo2t6f.png"
                         alt="Logo Rabbit Moon" class="w-40 h-auto m-0 p-0 leading-none" />
                     <p class="font-semibold text-black m-0 p-0 leading-none">Rabb-IT Moon</p>
                 </div>
@@ -1253,148 +1317,87 @@
             showWarningModal();
             originalConsole.log("Inspection is not allowed on this page.");
         };
-   
-        // Initialize particles if the function exists
-       document.addEventListener('DOMContentLoaded', function () {
-            // Particle config untuk elemen #particles-cover
-            if (typeof particlesJS === 'function' && document.getElementById('particles-cover')) {
-                particlesJS("particles-cover", {
-                    particles: {
-                        number: {
-                            value: 20,
-                            density: { enable: true, value_area: 800 }
-                        },
-                        color: {
-                            value: ["#ffffff", "#c5b3ff", "#a8d8ff"]
-                        },
-                        shape: {
-                            type: "image",
-                            image: {
-                                src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600280/ChatGPT_Image_May_7_2025_01_19_45_PM_eii3vd.png",
-                                width: 32,
-                                height: 32
-                            }
-                        },
-                        opacity: {
-                            value: 0.6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 1.5,
-                                opacity_min: 0.2,
-                                sync: false
-                            }
-                        },
-                        size: {
-                            value: 6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 2,
-                                size_min: 1,
-                                sync: false
-                            }
-                        },
-                        move: {
-                            enable: true,
-                            speed: 0.6,
-                            direction: "none",
-                            random: true,
-                            straight: false,
-                            out_mode: "out",
-                            bounce: false
-                        },
-                        line_linked: {
-                            enable: false
-                        }
-                    },
-                    interactivity: {
-                        detect_on: "canvas",
-                        events: {
-                            onhover: {
-                                enable: true,
-                                mode: "bubble"
-                            },
-                            onclick: {
-                                enable: false
-                            },
-                            resize: true
-                        }
-                    },
-                    retina_detect: true
-                });
-            }
 
-            // Particle config untuk elemen #particles-js
-            if (typeof particlesJS === 'function' && document.getElementById('particles-js')) {
-                particlesJS("particles-js", {
-                    particles: {
-                        number: {
-                            value: 20,
-                            density: { enable: true, value_area: 800 }
-                        },
-                        color: {
-                            value: ["#ffffff", "#c5b3ff", "#a8d8ff"]
-                        },
-                        shape: {
-                            type: "image",
-                            image: {
-                                src: "https://res.cloudinary.com/dbo48p92d/image/upload/v1746600280/ChatGPT_Image_May_7_2025_01_19_45_PM_eii3vd.png",
-                                width: 32,
-                                height: 32
-                            }
-                        },
-                        opacity: {
-                            value: 0.6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 1.5,
-                                opacity_min: 0.2,
-                                sync: false
-                            }
-                        },
-                        size: {
-                            value: 6,
-                            random: true,
-                            anim: {
-                                enable: true,
-                                speed: 2,
-                                size_min: 1,
-                                sync: false
-                            }
-                        },
-                        move: {
+        // Initialize particles if the function exists
+        document.addEventListener('DOMContentLoaded', function () {
+            const particleConfig = {
+                particles: {
+                    number: {
+                        value: 80,
+                        density: { enable: true, value_area: 1200 }
+                    },
+                    color: {
+                        value: ["#ffffff", "#ffe4b5", "#ffdab9"] // putih, krem bintang, peach lembut
+                    },
+                    shape: {
+                        type: "circle"
+                    },
+                    opacity: {
+                        value: 0.7,
+                        random: true,
+                        anim: {
                             enable: true,
-                            speed: 0.6,
-                            direction: "none",
-                            random: true,
-                            straight: false,
-                            out_mode: "out",
-                            bounce: false
-                        },
-                        line_linked: {
+                            speed: 1.5,
+                            opacity_min: 0.2,
+                            sync: false
+                        }
+                    },
+                    size: {
+                        value: 3,
+                        random: true,
+                        anim: {
+                            enable: true,
+                            speed: 1,
+                            size_min: 0.5,
+                            sync: false
+                        }
+                    },
+                    move: {
+                        enable: true,
+                        speed: 0.6,
+                        direction: "none",
+                        random: true,
+                        straight: false,
+                        out_mode: "out",
+                        bounce: false,
+                        attract: {
                             enable: false
                         }
                     },
-                    interactivity: {
-                        detect_on: "canvas",
-                        events: {
-                            onhover: {
-                                enable: true,
-                                mode: "bubble"
-                            },
-                            onclick: {
-                                enable: false
-                            },
-                            resize: true
-                        }
-                    },
-                    retina_detect: true
-                });
+                    line_linked: {
+                        enable: false
+                    }
+                },
+                interactivity: {
+                    detect_on: "canvas",
+                    events: {
+                        onhover: {
+                            enable: true,
+                            mode: "repulse"
+                        },
+                        onclick: {
+                            enable: true,
+                            mode: "push",
+                            push: {
+                                particles_nb: 2
+                            }
+                        },
+                        resize: true
+                    }
+                },
+                retina_detect: true
+            };
+
+            if (typeof particlesJS === 'function') {
+                if (document.getElementById('particles-cover')) {
+                    particlesJS("particles-cover", particleConfig);
+                }
+                if (document.getElementById('particles-js')) {
+                    particlesJS("particles-js", particleConfig);
+                }
             }
         });
-  // Countdown Timer
+        // Countdown Timer
         function updateCountdown() {
             // Check if the date template variable has been replaced with an actual date
             const weddingDateStr = "{{date}}";
@@ -1619,7 +1622,7 @@
                 gallerySlider.scrollBy({ left: -250, behavior: 'smooth' });
             }
         }
-       
+
 
     </script>
 
